@@ -1,5 +1,9 @@
 name: build
-on: [push]
+
+on:
+  push:
+    tags:
+      - "v*" # Push events to matching v*, i.e. v1.0, v20.15.10
 
 jobs:
   build-and-test:
@@ -12,11 +16,17 @@ jobs:
       - uses: bahmutov/npm-install@v1
       - run: npm run build
 
-      - name: Push updates to branch for major version
-        # if there is a new version published, let's say v1.2.3
-        # then this step will update branch "v1" to this commit
-        # https://github.com/cypress-io/github-action/branches
-        if: steps.semantic.outputs.new_release_published == 'true'
-        run: "git push https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git HEAD:refs/heads/v${{steps.semantic.outputs.new_release_major_version}}"
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: |
+            Changes in this Release
+            - First Change
+            - Second Change
+          draft: false
+          prerelease: false
