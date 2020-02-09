@@ -12,18 +12,6 @@ jobs:
       - uses: bahmutov/npm-install@v1
       - run: npm run build
 
-      # https://github.com/cycjimmy/semantic-release-action
-      - name: Semantic Release
-        uses: cycjimmy/semantic-release-action@v2
-        id: semantic
-        with:
-          branch: master
-          extra_plugins: |
-            @semantic-release/git@v7
-            @semantic-release/changelog
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Push updates to branch for major version
         # if there is a new version published, let's say v1.2.3
         # then this step will update branch "v1" to this commit
