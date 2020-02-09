@@ -1,4 +1,4 @@
-# Test Av Javascript Acton
+# Test Av Javascript Action
 
 ## Inputs
 
