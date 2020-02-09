@@ -1,0 +1,28 @@
+{
+  "name": "taja",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "ncc build -o dist index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Castigere/taja.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Castigere/taja/issues"
+  },
+  "homepage": "https://github.com/Castigere/taja#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.2",
+    "@actions/github": "^2.1.0"
+  },
+  "devDependencies": {
+    "@zeit/ncc": "^0.21.0"
+  }
+}
