@@ -2,9 +2,8 @@ name: build
 
 on:
   push:
-    tags:
-      - "*" # Push events to matching v*, i.e. v1.0, v20.15.10
-
+    branches:
+      - master
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
