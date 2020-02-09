@@ -4,18 +4,26 @@ This action prints "Hello World" or "Hello" + the name of a person to greet to t
 
 ## Inputs
 
-### `who-to-greet`
+### `slack-token`
 
-**Required** The name of the person to greet. Default `"World"`.
+**Required** Slack token for the app publishing the images`.
+
+### `picture-path`
+
+**Required** Picture folder`.
+
+### `channels`
+
+**Required** Comma separated list of slack channels to post pictures to`.
 
 ## Outputs
 
-### `time`
-
-The time we greeted you.
+### `slack status`
 
 ## Example usage
 
-uses: actions/hello-world-javascript-action@v1
+uses: castigere/taja@master
 with:
-who-to-greet: 'Mona the Octocat'
+slack-token: "tokentokntokntoktontoken"
+picture-path: "/screenshots"
+channels: "paw-cypress-test"
