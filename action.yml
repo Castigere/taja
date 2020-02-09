@@ -1,13 +1,21 @@
-name: "Hello World"
-description: "Greet someone and record the time"
+name: "Post test results to slack"
+description: "Upload pictures taken during test run to slack channel"
 inputs:
-  who-to-greet: # id of input
-    description: "Who to greet"
+  slack-token:
+    description: "Slack token"
     required: true
-    default: "World"
+    default: "123"
+  picture-path:
+    description: "Folder path with pictures to upload"
+    required: true
+    default: "cypress/screenshots"
+  channels:
+    description: "Comma separated list of channels to post in"
+    required: true
+    default: "channel1, channel2"
 outputs:
-  time: # id of output
-    description: "The time we greeted you"
+  message:
+    description: "Reply from slack"
 runs:
   using: "node12"
   main: "dist/index.js"
