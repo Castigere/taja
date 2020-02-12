@@ -42,7 +42,7 @@ exports.postMessage = (message, channels, slackToken, threadTs) => {
         createBody(), {
         headers
     }).then(response => response.data.ts)
-        .catch(err => { return new Error(err) });
+        .catch(err => err);
 };
 
 exports.getFilenamesFromSubdirs = path => {

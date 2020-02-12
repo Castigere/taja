@@ -2282,18 +2282,19 @@ try {
 
     const postTestReport = async () => {
         const threadTs = await postMessage(message, channels, slackToken)
-        getFilenamesFromSubdirs(picturePath)
-            .then(files => {
-                for (let file of files) {
-                    postFile(file, channels, slackToken, threadTs);
-                };
-            })
-            .catch(err => { return new Error(err) })
+        console.log(threadTs)
+        // getFilenamesFromSubdirs(picturePath)
+        //     .then(files => {
+        //         for (let file of files) {
+        //             postFile(file, channels, slackToken, threadTs);
+        //         };
+        //     })
+        //     .catch(err => { return new Error(err) })
 
-        console.log(`Uploading ${files} to Slack`);
+        // console.log(`Uploading ${files} to Slack`);
 
-        const payload = JSON.stringify(github.context.payload, undefined, 2)
-        console.log(`The event payload: ${payload}`);
+        // const payload = JSON.stringify(github.context.payload, undefined, 2)
+        // console.log(`The event payload: ${payload}`);
     };
 
     postTestReport();
@@ -4850,7 +4851,7 @@ exports.postMessage = (message, channels, slackToken, threadTs) => {
         createBody(), {
         headers
     }).then(response => response.data.ts)
-        .catch(err => { return new Error(err) });
+        .catch(err => err);
 };
 
 exports.getFilenamesFromSubdirs = path => {
