@@ -42,7 +42,10 @@ exports.postMessage = (message, channels, slackToken, threadTs) => {
         'https://slack.com/api/chat.postMessage',
         createBody(), {
         headers
-    }).then(response => response.data.ts)
+    }).then(response => {
+        console.log('RESPONSE', response.data)
+        return response.data.ts
+    })
         .catch(err => {
             console.log('ERROR', err);
             return err
