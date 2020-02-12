@@ -12,13 +12,13 @@ try {
     const postTestReport = async () => {
         const threadTs = await postMessage(message, channels, slackToken)
         console.log(threadTs)
-        // getFilenamesFromSubdirs(picturePath)
-        //     .then(files => {
-        //         for (let file of files) {
-        //             postFile(file, channels, slackToken, threadTs);
-        //         };
-        //     })
-        //     .catch(err => { return new Error(err) })
+        getFilenamesFromSubdirs(picturePath)
+            .then(files => {
+                for (let file of files) {
+                    postFile(file, channels, slackToken, threadTs);
+                };
+            })
+            .catch(err => err);
 
         // console.log(`Uploading ${files} to Slack`);
 
