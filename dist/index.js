@@ -2274,14 +2274,11 @@ const github = __webpack_require__(469);
 const { postFile, postMessage, getFilenamesFromSubdirs } = __webpack_require__(278);
 
 
-try {
-    const slackToken = core.getInput('slack-token');
-    const picturePath = core.getInput('picture-path');
-    const channels = core.getInput('channels');
-    const message = core.getInput('message');
-} catch (err) {
-    core.setFailed(err);
-}
+const slackToken = core.getInput('slack-token');
+const picturePath = core.getInput('picture-path');
+const channels = core.getInput('channels');
+const message = core.getInput('message');
+
 
 const postTestReport = async () => {
     try {
@@ -4839,7 +4836,7 @@ exports.postFile = (file, channels, slackToken, threadTs) => {
 };
 
 exports.postMessage = (message, channels, slackToken, threadTs) => {
-    console.log('args12', message, channels)
+    console.log('args13', message, channels)
     const headers = {
         'Content-type': 'application/json',
         // 'Authorization': `Bearer ${slackToken}`
