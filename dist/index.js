@@ -2282,10 +2282,14 @@ try {
 
     const postTestReport = async () => {
         const threadTs = await postMessage(message, channels, slackToken)
-        const files = await getFilenamesFromSubdirs(picturePath);
-        for (let file of files) {
-            postFile(file, channels, slackToken, threadTs);
-        };
+        getFilenamesFromSubdirs(picturePath)
+            .then(files => {
+                for (let file of files) {
+                    postFile(file, channels, slackToken, threadTs);
+                };
+            })
+            .catch(err => { throw err })
+
         console.log(`Uploading ${files} to Slack`);
 
         const payload = JSON.stringify(github.context.payload, undefined, 2)
