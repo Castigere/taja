@@ -3,14 +3,15 @@ const github = require('@actions/github');
 const { postFile, postMessage, getFilenamesFromSubdirs } = require('./utils');
 
 
-const slackToken = core.getInput('slack-token');
-const picturePath = core.getInput('picture-path');
-const channels = core.getInput('channels');
-const message = core.getInput('message');
+
 
 
 const postTestReport = async () => {
     try {
+        const slackToken = core.getInput('slack-token');
+        const picturePath = core.getInput('picture-path');
+        const channels = core.getInput('channels');
+        const message = core.getInput('message');
         const threadTs = await postMessage(message, channels, slackToken)
     } catch (err) {
         core.setFailed(err);

@@ -2274,14 +2274,15 @@ const github = __webpack_require__(469);
 const { postFile, postMessage, getFilenamesFromSubdirs } = __webpack_require__(278);
 
 
-const slackToken = core.getInput('slack-token');
-const picturePath = core.getInput('picture-path');
-const channels = core.getInput('channels');
-const message = core.getInput('message');
+
 
 
 const postTestReport = async () => {
     try {
+        const slackToken = core.getInput('slack-token');
+        const picturePath = core.getInput('picture-path');
+        const channels = core.getInput('channels');
+        const message = core.getInput('message');
         const threadTs = await postMessage(message, channels, slackToken)
     } catch (err) {
         core.setFailed(err);
