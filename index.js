@@ -14,7 +14,7 @@ try {
             const threadTs = await postMessage(message, channels, 'slackToken')
             console.log(threadTs)
         } catch (err) {
-            console.log('ERROR I HOVEDFILA', err)
+            core.setFailed(err.message);
         }
         // getFilenamesFromSubdirs(picturePath)
         //     .then(files => {
