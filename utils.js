@@ -44,12 +44,11 @@ exports.postMessage = (message, channels, slackToken, threadTs) => {
         headers
     }).then(response => {
         console.log('RESPONSE', response.data)
-        return response.data.ts
-    })
-        .catch(err => {
-            console.log('ERROR', err);
-            return err
-        });
+        return response.data.ok ? response.data.ts : new Error(response.data.error)
+    }).catch(err => {
+        console.log('ERROR', err);
+        return err
+    });
 };
 
 exports.getFilenamesFromSubdirs = path => {
