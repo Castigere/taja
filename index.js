@@ -11,7 +11,7 @@ const message = core.getInput('message');
 const postTestReport = async () => {
     try {
         console.log('hva kommer du ikke hit en gag?')
-        // const threadTs = await postMessage(message, channels, slackToken)
+        const threadTs = await postMessage(message, channels, slackToken)
     } catch (err) {
         core.setFailed(err);
     }

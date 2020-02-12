@@ -2282,7 +2282,7 @@ const message = core.getInput('message');
 const postTestReport = async () => {
     try {
         console.log('hva kommer du ikke hit en gag?')
-        // const threadTs = await postMessage(message, channels, slackToken)
+        const threadTs = await postMessage(message, channels, slackToken)
     } catch (err) {
         core.setFailed(err);
     }
@@ -4850,8 +4850,8 @@ exports.postMessage = (message, channels, slackToken, threadTs) => {
     console.log('rett før selve sending!=')
     return axios.post(
         'https://slack.com/api/chat.postMessage',
-        createBody(),
-        {}
+        // createBody(),
+        // {headers}
     ).then(response => {
         console.log('kommer du hit?')
         if (response.data.ok) {

@@ -40,8 +40,8 @@ exports.postMessage = (message, channels, slackToken, threadTs) => {
     console.log('rett før selve sending!=')
     return axios.post(
         'https://slack.com/api/chat.postMessage',
-        createBody(),
-        {}
+        // createBody(),
+        // {headers}
     ).then(response => {
         console.log('kommer du hit?')
         if (response.data.ok) {
