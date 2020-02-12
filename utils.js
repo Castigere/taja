@@ -1,6 +1,6 @@
 const fs = require('fs');
 const axios = require('axios');
-const FormData = require('form-data')
+const FormData = require('form-data');
 const dir = require('node-dir');
 
 exports.postFile = (file, channels, slackToken, threadTs) => {
@@ -38,22 +38,22 @@ exports.postMessage = (message, channels, slackToken, threadTs) => {
     //     ...threadTs && { thread_ts: threadTs }
     // });
     console.log('rett før selve sending!=')
-    return axios.post(
-        'https://slack.com/api/chat.postMessage',
+    return axios.post('https://slack.com/api/chat.postMessage')
         // createBody(),
         // {headers}
-    ).then(response => {
-        console.log('kommer du hit?')
-        if (response.data.ok) {
-            return response.data.ts
-        } else {
-            console.log('eller hit?')
-            throw new Error(response.data.error)
-        }
-    }).catch(err => {
-        console.log('hva med her?')
-        throw err
-    });
+        // )
+        .then(response => {
+            console.log('kommer du hit?')
+            if (response.data.ok) {
+                return response.data.ts
+            } else {
+                console.log('eller hit?')
+                throw new Error(response.data.error)
+            }
+        }).catch(err => {
+            console.log('hva med her?')
+            throw err
+        });
 };
 
 exports.getFilenamesFromSubdirs = path => {
