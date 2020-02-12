@@ -29,7 +29,7 @@ exports.postMessage = (message, channels, slackToken, threadTs) => {
     console.log('args', message, channels)
     const headers = {
         'Content-type': 'application/json',
-        'Authorization': `Bearer ${slackToken}`
+        'Authorization': `BearerRR ${slackToken}`
     };
 
     const createBody = () => ({
@@ -43,7 +43,10 @@ exports.postMessage = (message, channels, slackToken, threadTs) => {
         createBody(), {
         headers
     }).then(response => response.data.ts)
-        .catch(err => err);
+        .catch(err => {
+            console.log('ERROR', err);
+            return err
+        });
 };
 
 exports.getFilenamesFromSubdirs = path => {

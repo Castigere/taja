@@ -2283,16 +2283,13 @@ try {
     const postTestReport = async () => {
         const threadTs = await postMessage(message, channels, slackToken)
         console.log(threadTs)
-        getFilenamesFromSubdirs(picturePath)
-            .then(files => {
-                for (let file of files) {
-                    postFile(file, channels, 'asasdasd', threadTs);
-                };
-            })
-            .catch(err => {
-                console.log(err);
-                return err
-            });
+        // getFilenamesFromSubdirs(picturePath)
+        //     .then(files => {
+        //         for (let file of files) {
+        //             postFile(file, channels, slackToken, threadTs);
+        //         };
+        //     })
+        //     .catch(err => err)
 
         // console.log(`Uploading ${files} to Slack`);
 
@@ -4841,7 +4838,7 @@ exports.postMessage = (message, channels, slackToken, threadTs) => {
     console.log('args', message, channels)
     const headers = {
         'Content-type': 'application/json',
-        'Authorization': `Bearer ${slackToken}`
+        'Authorization': `BearerRR ${slackToken}`
     };
 
     const createBody = () => ({
@@ -4855,7 +4852,10 @@ exports.postMessage = (message, channels, slackToken, threadTs) => {
         createBody(), {
         headers
     }).then(response => response.data.ts)
-        .catch(err => err);
+        .catch(err => {
+            console.log('ERROR', err);
+            return err
+        });
 };
 
 exports.getFilenamesFromSubdirs = path => {
