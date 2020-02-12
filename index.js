@@ -17,7 +17,7 @@ try {
                     postFile(file, channels, slackToken, threadTs);
                 };
             })
-            .catch(err => { throw err })
+            .catch(err => { return new Error(err) })
 
         console.log(`Uploading ${files} to Slack`);
 

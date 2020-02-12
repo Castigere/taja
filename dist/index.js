@@ -2288,7 +2288,7 @@ try {
                     postFile(file, channels, slackToken, threadTs);
                 };
             })
-            .catch(err => { throw err })
+            .catch(err => { return new Error(err) })
 
         console.log(`Uploading ${files} to Slack`);
 
@@ -4829,7 +4829,7 @@ exports.postFile = (file, channels, slackToken, threadTs) => {
                 'Authorization': `Bearer ${slackToken}`
             }
         }).then(response => response.data)
-            .catch(err => { throw err });
+            .catch(err => { return new Error(err) });
     });
 };
 
@@ -4850,13 +4850,13 @@ exports.postMessage = (message, channels, slackToken, threadTs) => {
         createBody(), {
         headers
     }).then(response => response.data.ts)
-        .catch(err => { throw err });
+        .catch(err => { return new Error(err) });
 };
 
 exports.getFilenamesFromSubdirs = path => {
     return dir.promiseFiles(`${__dirname}/${path}`)
         .then(files => files)
-        .catch(err => { throw err })
+        .catch(err => { return new Error(err) })
 };
 
 
