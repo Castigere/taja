@@ -43,12 +43,15 @@ exports.postMessage = (message, channels, slackToken, threadTs) => {
         createBody(),
         { headers }
     ).then(response => {
+        console.log('kommer du hit?')
         if (response.data.ok) {
             return response.data.ts
         } else {
+            console.log('eller hit?')
             throw new Error(response.data.error)
         }
     }).catch(err => {
+        console.log('hva med her?')
         throw err
     });
 };
