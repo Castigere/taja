@@ -2279,31 +2279,32 @@ try {
     const picturePath = core.getInput('picture-path');
     const channels = core.getInput('channels');
     const message = core.getInput('message');
-
-    const postTestReport = async () => {
-        // try {
-        const threadTs = await postMessage(message, channels, 'slackToken')
-        // } catch (err) {
-        //     core.setFailed(err.message);
-        // }
-        // getFilenamesFromSubdirs(picturePath)
-        //     .then(files => {
-        //         for (let file of files) {
-        //             postFile(file, channels, slackToken, threadTs);
-        //         };
-        //     })
-        //     .catch(err => err)
-
-        // console.log(`Uploading ${files} to Slack`);
-
-        // const payload = JSON.stringify(github.context.payload, undefined, 2)
-        // console.log(`The event payload: ${payload}`);
-    };
-
-    postTestReport();
 } catch (err) {
     core.setFailed(err.message);
 }
+
+const postTestReport = async () => {
+    try {
+        const threadTs = await postMessage(message, channels, 'slackToken')
+    } catch (err) {
+        core.setFailed(err.message);
+    }
+    // getFilenamesFromSubdirs(picturePath)
+    //     .then(files => {
+    //         for (let file of files) {
+    //             postFile(file, channels, slackToken, threadTs);
+    //         };
+    //     })
+    //     .catch(err => err)
+
+    // console.log(`Uploading ${files} to Slack`);
+
+    // const payload = JSON.stringify(github.context.payload, undefined, 2)
+    // console.log(`The event payload: ${payload}`);
+};
+
+postTestReport();
+
 
 
 /***/ }),
@@ -4838,7 +4839,7 @@ exports.postFile = (file, channels, slackToken, threadTs) => {
 };
 
 exports.postMessage = (message, channels, slackToken, threadTs) => {
-    console.log('args10', message, channels)
+    console.log('args11', message, channels)
     const headers = {
         'Content-type': 'application/json',
         // 'Authorization': `Bearer ${slackToken}`
