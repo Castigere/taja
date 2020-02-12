@@ -26,7 +26,7 @@ exports.postFile = (file, channels, slackToken, threadTs) => {
 };
 
 exports.postMessage = (message, channels, slackToken, threadTs) => {
-    console.log('args5', message, channels)
+    console.log('args6', message, channels)
     const headers = {
         'Content-type': 'application/json',
         // 'Authorization': `Bearer ${slackToken}`
@@ -50,6 +50,7 @@ exports.postMessage = (message, channels, slackToken, threadTs) => {
             console.log('OKOKKOK!!')
             return response.data.ts
         } else {
+            console.log('HEY FEIL')
             throw new Error(response.data.error)
         }
     }).catch(err => {

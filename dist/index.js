@@ -2281,8 +2281,12 @@ try {
     const message = core.getInput('message');
 
     const postTestReport = async () => {
-        const threadTs = await postMessage(message, channels, 'slackToken')
-        console.log(threadTs)
+        try {
+            const threadTs = await postMessage(message, channels, 'slackToken')
+            console.log(threadTs)
+        } catch (err) {
+            console.log('ERROR I HOVEDFILA', err)
+        }
         // getFilenamesFromSubdirs(picturePath)
         //     .then(files => {
         //         for (let file of files) {
@@ -4835,7 +4839,7 @@ exports.postFile = (file, channels, slackToken, threadTs) => {
 };
 
 exports.postMessage = (message, channels, slackToken, threadTs) => {
-    console.log('args5', message, channels)
+    console.log('args6', message, channels)
     const headers = {
         'Content-type': 'application/json',
         // 'Authorization': `Bearer ${slackToken}`
@@ -4859,6 +4863,7 @@ exports.postMessage = (message, channels, slackToken, threadTs) => {
             console.log('OKOKKOK!!')
             return response.data.ts
         } else {
+            console.log('HEY FEIL')
             throw new Error(response.data.error)
         }
     }).catch(err => {

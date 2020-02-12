@@ -10,8 +10,12 @@ try {
     const message = core.getInput('message');
 
     const postTestReport = async () => {
-        const threadTs = await postMessage(message, channels, 'slackToken')
-        console.log(threadTs)
+        try {
+            const threadTs = await postMessage(message, channels, 'slackToken')
+            console.log(threadTs)
+        } catch (err) {
+            console.log('ERROR I HOVEDFILA', err)
+        }
         // getFilenamesFromSubdirs(picturePath)
         //     .then(files => {
         //         for (let file of files) {
