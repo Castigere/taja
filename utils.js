@@ -20,11 +20,8 @@ exports.postFile = (file, channels, slackToken, threadTs) => {
                 ...form.getHeaders(),
                 'Authorization': `Bearer ${slackToken}`
             }
-        }).then(response => {
-            console.log('success! ', response.data);
-        }).catch(err => {
-            console.log(err);
-        });
+        }).then(response => response.data)
+            .catch(err => { throw err });
     });
 };
 
@@ -45,9 +42,7 @@ exports.postMessage = (message, channels, slackToken, threadTs) => {
         createBody(), {
         headers
     }).then(response => response.data.ts)
-        .catch(err => {
-            console.log(err);
-        });
+        .catch(err => { throw err });
 };
 
 exports.getFilenamesFromSubdirs = path => {

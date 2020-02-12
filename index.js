@@ -22,6 +22,6 @@ try {
     };
 
     postTestReport();
-} catch (error) {
-    core.setFailed(error.message);
+} catch (err) {
+    core.setFailed(err.message);
 }
