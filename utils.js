@@ -27,21 +27,21 @@ exports.postFile = (file, channels, slackToken, threadTs) => {
 
 exports.postMessage = (message, channels, slackToken, threadTs) => {
     console.log('args15', message, channels)
-    // const headers = {
-    //     'Content-type': 'application/json',
-    //     'Authorization': `BearerRR ${slackToken}`
-    // };
+    const headers = {
+        'Content-type': 'application/json',
+        'Authorization': `BearerRR ${slackToken}`
+    };
     console.log('hva med rett før createBody')
     const createBody = () => ({
         'channel': channels,
         'text': message,
         ...threadTs && { thread_ts: threadTs }
     });
-
+    console.log('rett før selve sending!=')
     return axios.post(
         'https://slack.com/api/chat.postMessage',
         createBody(),
-        { headers }
+        {}
     ).then(response => {
         console.log('kommer du hit?')
         if (response.data.ok) {
