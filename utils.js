@@ -29,7 +29,7 @@ exports.postMessage = (message, channels, slackToken, threadTs) => {
     console.log('args13', message, channels)
     const headers = {
         'Content-type': 'application/json',
-        // 'Authorization': `Bearer ${slackToken}`
+        'Authorization': `Bearer ${slackToken}`
     };
 
     const createBody = () => ({
