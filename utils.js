@@ -39,21 +39,21 @@ exports.postMessage = (message, channels, slackToken, threadTs) => {
     // });
     console.log('rett før selve sending!=')
     return axios.post('https://slack.com/api/chat.postMessage')
-        // createBody(),
-        // {headers}
-        // )
-        .then(response => {
-            console.log('kommer du hit?')
-            if (response.data.ok) {
-                return response.data.ts
-            } else {
-                console.log('eller hit?')
-                throw new Error(response.data.error)
-            }
-        }).catch(err => {
-            console.log('hva med her?')
-            throw err
-        });
+    // createBody(),
+    // {headers}
+    // )
+    // .then(response => {
+    //     console.log('kommer du hit?')
+    //     if (response.data.ok) {
+    //         return response.data.ts
+    //     } else {
+    //         console.log('eller hit?')
+    //         throw new Error(response.data.error)
+    //     }
+    // }).catch(err => {
+    //     console.log('hva med her?')
+    //     throw err
+    // });
 };
 
 exports.getFilenamesFromSubdirs = path => {
