@@ -4856,7 +4856,7 @@ exports.postMessage = (message, channels, slackToken, threadTs) => {
 exports.getFilenamesFromSubdirs = path => {
     return dir.promiseFiles(`${__dirname}/${path}`)
         .then(files => files)
-        .catch(err => { return new Error(err) })
+        .catch(err => err)
 };
 
 
