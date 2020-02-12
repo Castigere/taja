@@ -2283,8 +2283,9 @@ try {
     const postTestReport = async () => {
         try {
             const threadTs = await postMessage(message, channels, 'slackToken')
-            console.log(threadTs)
+            console.log('feilmeldingen kommer hit og sikkert', threadTs)
         } catch (err) {
+            console.log('catch utenfor metode')
             core.setFailed(err.message);
         }
         // getFilenamesFromSubdirs(picturePath)
@@ -4839,7 +4840,7 @@ exports.postFile = (file, channels, slackToken, threadTs) => {
 };
 
 exports.postMessage = (message, channels, slackToken, threadTs) => {
-    console.log('args7', message, channels)
+    console.log('args8', message, channels)
     const headers = {
         'Content-type': 'application/json',
         // 'Authorization': `Bearer ${slackToken}`

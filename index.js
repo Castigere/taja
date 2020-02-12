@@ -12,8 +12,9 @@ try {
     const postTestReport = async () => {
         try {
             const threadTs = await postMessage(message, channels, 'slackToken')
-            console.log(threadTs)
+            console.log('feilmeldingen kommer hit og sikkert', threadTs)
         } catch (err) {
+            console.log('catch utenfor metode')
             core.setFailed(err.message);
         }
         // getFilenamesFromSubdirs(picturePath)
