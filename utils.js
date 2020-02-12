@@ -40,9 +40,9 @@ exports.postMessage = (message, channels, slackToken, threadTs) => {
 
     return axios.post(
         'https://slack.com/api/chat.postMessage',
-        createBody(), {
-        headers
-    }).then(response => {
+        createBody(),
+        { headers }
+    ).then(response => {
         if (response.data.ok) {
             return response.data.ts
         } else {

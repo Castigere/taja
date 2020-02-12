@@ -2282,7 +2282,7 @@ const message = core.getInput('message');
 
 const postTestReport = async () => {
     try {
-        const threadTs = await postMessage(message, channels, 'slackToken')
+        const threadTs = await postMessage(message, channels, slackToken)
     } catch (err) {
         core.setFailed(err);
     }
@@ -4850,9 +4850,9 @@ exports.postMessage = (message, channels, slackToken, threadTs) => {
 
     return axios.post(
         'https://slack.com/api/chat.postMessage',
-        createBody(), {
-        headers
-    }).then(response => {
+        createBody(),
+        { headers }
+    ).then(response => {
         if (response.data.ok) {
             return response.data.ts
         } else {
