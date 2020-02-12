@@ -2281,13 +2281,11 @@ try {
     const message = core.getInput('message');
 
     const postTestReport = async () => {
-        try {
-            const threadTs = await postMessage(message, channels, 'slackToken')
-            console.log('feilmeldingen kommer hit og sikkert', threadTs)
-        } catch (err) {
-            console.log('catch utenfor metode')
-            core.setFailed(err.message);
-        }
+        // try {
+        const threadTs = await postMessage(message, channels, 'slackToken')
+        // } catch (err) {
+        //     core.setFailed(err.message);
+        // }
         // getFilenamesFromSubdirs(picturePath)
         //     .then(files => {
         //         for (let file of files) {
@@ -4840,7 +4838,7 @@ exports.postFile = (file, channels, slackToken, threadTs) => {
 };
 
 exports.postMessage = (message, channels, slackToken, threadTs) => {
-    console.log('args9', message, channels)
+    console.log('args10', message, channels)
     const headers = {
         'Content-type': 'application/json',
         // 'Authorization': `Bearer ${slackToken}`
@@ -4857,18 +4855,12 @@ exports.postMessage = (message, channels, slackToken, threadTs) => {
         createBody(), {
         headers
     }).then(response => {
-        console.log('RESPONSE', response.data)
-        console.log('OK', response.data.ok)
-        console.log('ERROR', response.data.error)
         if (response.data.ok) {
-            console.log('OKOKKOK!!')
             return response.data.ts
         } else {
-            console.log('HEY FEIL')
             throw new Error(response.data.error)
         }
     }).catch(err => {
-        console.log('ERROR', err);
         throw err
     });
 };

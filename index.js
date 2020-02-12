@@ -10,13 +10,11 @@ try {
     const message = core.getInput('message');
 
     const postTestReport = async () => {
-        try {
-            const threadTs = await postMessage(message, channels, 'slackToken')
-            console.log('feilmeldingen kommer hit og sikkert', threadTs)
-        } catch (err) {
-            console.log('catch utenfor metode')
-            core.setFailed(err.message);
-        }
+        // try {
+        const threadTs = await postMessage(message, channels, 'slackToken')
+        // } catch (err) {
+        //     core.setFailed(err.message);
+        // }
         // getFilenamesFromSubdirs(picturePath)
         //     .then(files => {
         //         for (let file of files) {
