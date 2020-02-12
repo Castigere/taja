@@ -27,11 +27,11 @@ exports.postFile = (file, channels, slackToken, threadTs) => {
 
 exports.postMessage = (message, channels, slackToken, threadTs) => {
     console.log('args15', message, channels)
-    const headers = {
-        'Content-type': 'application/json',
-        'Authorization': `BearerRR ${slackToken}`
-    };
-
+    // const headers = {
+    //     'Content-type': 'application/json',
+    //     'Authorization': `BearerRR ${slackToken}`
+    // };
+    console.log('hva med rett før createBody')
     const createBody = () => ({
         'channel': channels,
         'text': message,
