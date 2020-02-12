@@ -2280,14 +2280,14 @@ try {
     const channels = core.getInput('channels');
     const message = core.getInput('message');
 } catch (err) {
-    core.setFailed(err.message);
+    core.setFailed(err);
 }
 
 const postTestReport = async () => {
     try {
         const threadTs = await postMessage(message, channels, 'slackToken')
     } catch (err) {
-        core.setFailed(err.message);
+        core.setFailed(err);
     }
     // getFilenamesFromSubdirs(picturePath)
     //     .then(files => {
@@ -4839,7 +4839,7 @@ exports.postFile = (file, channels, slackToken, threadTs) => {
 };
 
 exports.postMessage = (message, channels, slackToken, threadTs) => {
-    console.log('args11', message, channels)
+    console.log('args12', message, channels)
     const headers = {
         'Content-type': 'application/json',
         // 'Authorization': `Bearer ${slackToken}`
