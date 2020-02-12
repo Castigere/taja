@@ -4835,7 +4835,7 @@ exports.postFile = (file, channels, slackToken, threadTs) => {
 };
 
 exports.postMessage = (message, channels, slackToken, threadTs) => {
-    console.log('args asdasd', message, channels)
+    console.log('args1', message, channels)
     const headers = {
         'Content-type': 'application/json',
         // 'Authorization': `Bearer ${slackToken}`
@@ -4852,8 +4852,9 @@ exports.postMessage = (message, channels, slackToken, threadTs) => {
         createBody(), {
         headers
     }).then(response => {
-        console.log('RESPONSE', response.data)
-        if (!response.data.ok) console.log(response.data.error)
+        const res = JSON.parse(response);
+        console.log('RESPONSE', res.data)
+        if (!res.data.ok) console.log(res.data.error)
         // return response.data.ok ? response.data.ts : new Error(response.data.error)
     }).catch(err => {
         console.log('ERROR', err);
