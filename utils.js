@@ -26,7 +26,7 @@ exports.postFile = (file, channels, slackToken, threadTs) => {
 };
 
 exports.postMessage = (message, channels, slackToken, threadTs) => {
-    console.log('args13', message, channels)
+    console.log('args14', message, channels)
     const headers = {
         'Content-type': 'application/json',
         'Authorization': `Bearer ${slackToken}`
