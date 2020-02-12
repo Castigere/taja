@@ -24,7 +24,12 @@
   "homepage": "https://github.com/Castigere/taja#readme",
   "dependencies": {
     "@actions/core": "^1.2.2",
-    "@actions/github": "^2.1.0"
+    "@actions/github": "^2.1.0",
+    "axios": "^0.19.2",
+    "form-data": "^3.0.0",
+    "gs": "0.0.2",
+    "node-dir": "^0.1.17",
+    "qs": "^6.9.1"
   },
   "devDependencies": {
     "@zeit/ncc": "^0.21.0",

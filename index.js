@@ -1,30 +1,27 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
+const { postFile, postMessage, getFilenamesFromSubdirs } = require('./utils');
 
 
 try {
-  const slackToken = core.getInput('slack-token');
-  const picturePath = core.getInput('picture-path');
-  const channels = core.getInput('channels');
+    const slackToken = core.getInput('slack-token');
+    const picturePath = core.getInput('picture-path');
+    const channels = core.getInput('channels');
+    const message = core.getInput('message');
 
-  console.log('Cypress to slack test reporter');
-  console.log('Slack tokeb:', slackToken);
-  console.log('Picture path', picturePath);
-  console.log('Channels', channels);
+    const postTestReport = async () => {
+        const threadTs = await postMessage(message, channels, slackToken)
+        const files = await getFilenamesFromSubdirs(picturePath);
+        for (let file of files) {
+            postFile(file, channels, slackToken, threadTs);
+        };
+        console.log(`Uploading ${files} to Slack`);
+
+        const payload = JSON.stringify(github.context.payload, undefined, 2)
+        console.log(`The event payload: ${payload}`);
+    };
+
+    postTestReport();
 } catch (error) {
-  core.setFailed(error.message);
+    core.setFailed(error.message);
 }
-
-
-// try {
-//   // `who-to-greet` input defined in action metadata file
-//   const nameToGreet = core.getInput('who-to-greet');
-//   console.log(`Hello ${nameToGreet}!`);
-//   const time = (new Date()).toTimeString();
-//   core.setOutput("time", time);
-//   // Get the JSON webhook payload for the event that triggered the workflow
-//   const payload = JSON.stringify(github.context.payload, undefined, 2)
-//   console.log(`The event payload: ${payload}`);
-// } catch (error) {
-//   core.setFailed(error.message);
-// }
