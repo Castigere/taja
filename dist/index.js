@@ -2286,10 +2286,13 @@ try {
         getFilenamesFromSubdirs(picturePath)
             .then(files => {
                 for (let file of files) {
-                    postFile(file, channels, slackToken, threadTs);
+                    postFile(file, channels, 'asasdasd', threadTs);
                 };
             })
-            .catch(err => err);
+            .catch(err => {
+                console.log(err);
+                return err
+            });
 
         // console.log(`Uploading ${files} to Slack`);
 
