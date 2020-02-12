@@ -50,7 +50,7 @@ exports.postMessage = (message, channels, slackToken, threadTs) => {
             console.log('OKOKKOK!!')
             return response.data.ts
         } else {
-            return new Error(response.data.error)
+            throw new Error(response.data.error)
         }
     }).catch(err => {
         console.log('ERROR', err);
